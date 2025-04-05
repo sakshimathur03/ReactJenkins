@@ -13,6 +13,15 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/sakshimathur03/ReactJenkins.git'
             }
         }
+        stage('Terraform Init') {
+            steps {
+                dir('Terraform') {
+                    bat 'terraform init'
+                    bat 'terraform plan -out=tfplan'
+                    bat 'terraform apply -auto-approve tfplan'
+                }
+            }
+        }
 
         stage('Install Dependencies & Build React App') {
             steps {
