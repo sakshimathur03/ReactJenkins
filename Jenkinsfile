@@ -16,12 +16,12 @@ pipeline {
 
         stage('Install Dependencies & Build React App') {
             steps {
-                dir('your-react-project-folder') {
+
                     bat 'npm install'
                     bat 'npm run build'
                 }
             }
-        }
+        
 
         stage('Prepare Build Artifact') {
             steps {
